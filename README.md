@@ -4,7 +4,7 @@ Opex is a simple plugin that defines two custom operators to execute motions (`:
 Execution operator (`opex-execute`) executes the code and displays any output in the message line.
 Appending operator (`opex-append`) executes the code and appends any output as a comment below the code.
 
-![demo-screencast](https://media.giphy.com/media/3o6fIQjIwdHzHN0fQY/giphy.gif)
+![demo-screencast](https://media.giphy.com/media/3o6fJ5GNRKb7kLtbNK/giphy.gif)
 
 ## Languages
 

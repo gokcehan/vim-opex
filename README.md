@@ -40,9 +40,11 @@ You can configure these mappings in your vimrc as such:
 
     nmap ge <plug>(opex-execute)
     vmap ge <plug>(opex-execute)
+    nmap gee <plug>(opex-execute-line)
 
     nmap gE <plug>(opex-append)
     vmap gE <plug>(opex-append)
+    nmap gEE <plug>(opex-append-line)
 
 If you want to disable opex for a specific filetype you can use the following:
 

@@ -40,7 +40,7 @@ endfunction
 
 function! opex#execute_system(type, ...)
   call s:select(a:0, a:type)
-  call system(@@)
+  echomsg system(@@)
   call s:restore()
 endfunction
 

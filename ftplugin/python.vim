@@ -7,7 +7,11 @@ if !has('python') && !has('python3')
   finish
 endif
 
-let b:opex_cmd = 'pythonx'
+let b:opex_cmd = 'python'
+if has('pythonx')
+  let b:opex_cmd = 'pythonx'
+endif
+
 let b:opex_execute_func = 'opex#execute'
 let b:opex_append_func = 'opex#append'
 

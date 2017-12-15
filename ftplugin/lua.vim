@@ -1,4 +1,4 @@
-if exists("b:loaded_opex_lua")
+if exists('b:loaded_opex_lua')
   finish
 endif
 let b:loaded_opex_lua = 1
@@ -7,44 +7,9 @@ if !has('lua')
   finish
 endif
 
-nnoremap <buffer> <silent> <plug>(opex-execute)
-      \ :<c-u>let b:opex_view = winsaveview()
-      \ \| set opfunc=opex#execute_op_ft<cr>g@
+let b:opex_cmd = 'lua'
+let b:opex_execute_func = 'opex#execute'
+let b:opex_append_func = 'opex#append'
 
-vnoremap <buffer> <silent> <plug>(opex-execute)
-      \ :<c-u>call opex#execute_op_ft(visualmode(), 1)<cr>
-
-nnoremap <buffer> <silent> <plug>(opex-execute-line)
-      \ :<c-u>let b:opex_view = winsaveview()
-      \ \| set opfunc=opex#execute_op_ft
-      \ \| exe 'normal! 'v:count1.'g@_'<cr>
-
-nnoremap <buffer> <silent> <plug>(opex-append)
-      \ :<c-u>let b:opex_view = winsaveview()
-      \ \|set opfunc=opex#append_op_ft<cr>g@
-
-vnoremap <buffer> <silent> <plug>(opex-append)
-      \ :<c-u>call opex#append_op_ft(visualmode(), 1)<cr>
-
-nnoremap <buffer> <silent> <plug>(opex-append-line)
-      \ :<c-u>let b:opex_view = winsaveview()
-      \ \| set opfunc=opex#append_op_ft
-      \ \| exe 'normal! 'v:count1.'g@_'<cr>
-
-if !hasmapto('<plug>(opex-execute)')
-  nmap gx <plug>(opex-execute)
-  vmap gx <plug>(opex-execute)
-endif
-
-if !hasmapto('<plug>(opex-execute-line)')
-  nmap gxx <plug>(opex-execute-line)
-endif
-
-if !hasmapto('<plug>(opex-append)')
-  nmap gz <plug>(opex-append)
-  vmap gz <plug>(opex-append)
-endif
-
-if !hasmapto('<plug>(opex-append-line)')
-  nmap gzz <plug>(opex-append-line)
-endif
+call opex#mappings()
+call opex#bindings()

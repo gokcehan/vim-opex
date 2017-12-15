@@ -1,0 +1,75 @@
+*opex.txt*  Operators to execute text objects
+
+Opex is a simple plugin that defines two custom operators to execute text
+objects (see |motion.txt|). First execution operator executes the code and
+displays any output in messages (see |message.txt|). Second appending operator
+executes the code and appends any output as a comment below the text object.
+
+LANGUAGES                                                     *opex-languages*
+
+Following languages are supported with their corresponding interfaces:
+
+- lua     |if_lua.txt|
+- perl    |if_perl.txt|
+- python  |if_pyth.txt|
+- ruby    |if_ruby.txt|
+- scheme  |if_mzsch.txt|
+- tcl     |if_tcl.txt|
+- sh      |system()|
+- vim     |execute()|
+
+Opex is automatically loaded if you have the required feature enabled in vim
+(e.g. |+lua| for lua files). If you have installed vim from a repository, you
+are likely missing most of these features. Therefore, you may need to compile
+vim from source with corresponding features enabled at compile time.
+
+MAPPINGS                                                       *opex-mappings*
+
+                                                                          *gx*
+gx{motion}              Execute text {motion} moves over.
+
+                                                                         *gxx*
+gxx                     Execute [count] lines.
+
+                                                                        *v_gx*
+{Visual}gx              Execute highlighted text.
+
+                                                                          *gz*
+gz{motion}              Execute text {motion} moves over and append output.
+
+                                                                         *gzz*
+gzz                     Execute [count] lines and append output.
+
+                                                                        *v_gz*
+{Visual}gz              Execute highlighted text and append output.
+
+CONFIGURATION                                             *opex-configuration*
+
+You can configure mappings for execution and appending as below:
+>
+    nmap ge  <plug>(opex-execute)
+    vmap ge  <plug>(opex-execute)
+    nmap gee <plug>(opex-execute-line)
+
+    nmap ga  <plug>(opex-append)
+    vmap ga  <plug>(opex-append)
+    nmap gaa <plug>(opex-append-line)
+<
+If you want to disable opex for a specific filetype you can use the following:
+>
+    let b:loaded_opex_lua = 1
+<
+You can change the value of 'commentstring' option to configure output style:
+>
+    autocmd Filetype lua setlocal commentstring=--[[%s]]
+<
+KNOWN ISSUES                                               *opex-known-issues*
+
+- Any limitation on the builtin interpreter also applies to opex (e.g. gui,
+  threading).
+- If you accidentally execute an infinite loop, you may need to manually kill
+  the vim process.
+- If you crash the interpreter somehow, plugins that use the same interface
+  may stop working until you restart vim.
+
+ vim:tw=78:ts=8:ft=help:norl:

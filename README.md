@@ -1,8 +1,8 @@
 # vim-opex
 
-Opex is a simple plugin that defines two custom operators to execute motions (`:h motion.txt`) with builtin interpreters.
-Execution operator (`opex-execute`) executes the code and displays any output in the message line.
-Appending operator (`opex-append`) executes the code and appends any output as a comment below the code.
+Opex is a simple plugin that defines two custom operators to execute text objects (`:h motion.txt`).
+First execution operator executes the code and displays any output in messages (`:h message.txt`).
+Second appending operator executes the code and appends any output as a comment below the text object.
 
 ![demo-screencast](https://media.giphy.com/media/3o6fJ5GNRKb7kLtbNK/giphy.gif)
 
@@ -29,29 +29,29 @@ Drop `autoload/opex.vim` to `~/.vim/autoload` and any of the files under `ftplug
 
 If you are using vim8 you can simply clone this repository as such (`:h packages`):
 
-    git clone https://github.com/gokcehan/vim-opex.git ~/.vim/pack/plugins/start/vim-opex
+    mkdir -p ~/.vim/pack/plugins/start
+    cd ~/.vim/pack/plugins/start
+    git clone https://github.com/gokcehan/vim-opex.git
 
 If you are using another plugin manager you should know what to do.
 
 ## Configuration
 
-By default execution is mapped to `gx` and appending is mapped to `gz`.
-You can configure these mappings in your vimrc as such:
+You can configure mappings for execution (default `gx`) and appending (default `gz`) as below:
 
-    nmap ge <plug>(opex-execute)
-    vmap ge <plug>(opex-execute)
+    nmap ge  <plug>(opex-execute)
+    vmap ge  <plug>(opex-execute)
     nmap gee <plug>(opex-execute-line)
 
-    nmap gE <plug>(opex-append)
-    vmap gE <plug>(opex-append)
-    nmap gEE <plug>(opex-append-line)
+    nmap ga  <plug>(opex-append)
+    vmap ga  <plug>(opex-append)
+    nmap gaa <plug>(opex-append-line)
 
 If you want to disable opex for a specific filetype you can use the following:
 
     let b:loaded_opex_lua = 1
 
-Appending uses the value of `commentstring` option for comments.
-You can change this option to configure the commenting style:
+You can change the value of `commentstring` option to configure output style:
 
     autocmd Filetype lua setlocal commentstring=--[[%s]]
 

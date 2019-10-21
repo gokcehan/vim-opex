@@ -4,7 +4,7 @@ Opex is a simple plugin that defines two custom operators to execute text object
 First execution operator executes the code and displays any output in messages (`:h message.txt`).
 Second appending operator executes the code and appends any output as a comment below the text object.
 
-![demo-screencast](https://media.giphy.com/media/3o6fJ5GNRKb7kLtbNK/giphy.gif)
+![demo-screencast](https://media.giphy.com/media/LQoJz806qfhJ79UiS8/giphy.gif)
 
 ## Languages
 
